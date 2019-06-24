@@ -1,3 +1,58 @@
 <template name="home">
-    //Put your home template here
+    <div class="content">
+        <form id="frm" method="POST" action="/projects/group-maker/gen" target="fout">
+            <table id="main">
+                <tr>
+                    <td valign="top">
+                        <h2>Input</h2>
+                        <div class="desc">
+                            <h4>Format: One name per line</h4>
+                            <textarea id="names" name="names" autofocus="autofocus"
+                                placeholder="Paste names of group members here"></textarea>
+                        </div>
+                    </td>
+                    <td id="groupnames" valign="top">
+                        <h2>Group Names</h2>
+                        <div class="desc">
+                            <h4>Customise the theme:</h4>
+                            <select id="themes" name="themes">
+                                <option value="animals">Animals</option>
+                                <option value="gems">Gems</option>
+                                <option value="default" selected="selected">Default</option>
+                            </select>
+                        </div>
+                        <div class="desc">
+                            <h4>Customise group names:</h4>
+                            <textarea id="actualgroups" name="groupnames"
+                                placeholder="Customise group names here"></textarea>
+                        </div>
+                    </td>
+                    <td id="settings" valign="top">
+                        <h2>Settings</h2>
+                        <div class="desc">
+                            <h4 id="numgroups">No. of Groups: 5</h4>
+                            <input type="range" min="2" max="25" id="groups" name="groups" value="5" />
+                        </div>
+                        <div class="desc">
+                            <h4>Output Format:</h4>
+                            <select id="format" name="format">
+                                <option value="html">Show Preview (HTML)</option>
+                                <option value="new">New Window (HTML)</option>
+                                <option value="csv">Save as Excel (CSV)</option>
+                            </select>
+                        </div>
+                        <div class="desc" style="margin-top: 2em;">
+                            <h4>Randomise:</h4>
+                            <input type="submit" id="cmdgen" name="cmdgen" value="Generate Groups!" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+        <h2>Output</h2>
+        <div class="desc">
+            <h4>Grouping below:</h4>
+        </div>
+    </div>
 </template>
