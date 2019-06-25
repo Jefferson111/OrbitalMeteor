@@ -61,11 +61,23 @@
           transition: all 0.5s;
 }
 
+
 /* Link Colours */
 .sidebar-left .sidebar-links a.link-blue {
   border-color: #2495d0;
 }
 
+.sidebar-left .sidebar-links a.link-blue i.fa {
+  color: #2495d0;
+}
+
+.sidebar-left .sidebar-links a.link-purple {
+  border-color: #915ba2;
+}
+
+.sidebar-left .sidebar-links a.link-purple i.fa {
+  color: #915ba2;
+}
 
 /* Making the sidebar responsive */
 @media (max-width: 900px) {
