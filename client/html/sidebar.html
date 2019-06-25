@@ -2,6 +2,13 @@
     <aside class="sidebar-left"> 
     <img src="GC_logo.jpg" class="icon">
     <a id="company-logo" href="#">GroupCreator</a>
-        
+		<div class="sidebar-links">
+			<a class="link-blue" href="/home" id="randomiser-link"><i class="fa fa-users"></i>Randomiser</a>
+		    {{#if currentUser}}
+			    <a class="link-purple logout" href="#" id="logout-link"><i class="fa fa-sign-out"></i>Logout</a>
+			{{else}}
+                <a class="link-blue" href="/" id="login-link"><i class="fa fa-sign-in"></i>Login</a>
+	        {{/if}}
+		</div>
     </aside>
 </template>
