@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #212020;
+  background-color: #000000;
   background-size: cover;
   width: 200px;
   height: 100%;
@@ -23,10 +23,49 @@
   margin: 0 auto;
   padding: 10px 0px 0px 0px;
   text-align: center;
-  color:  #ffffff;
+  color: #ffffff;
   font-size: 30px;
   font-weight: 600;
 }
+
+.sidebar-left .sidebar-links {
+  margin: 20px auto;
+}
+
+.sidebar-left .sidebar-links a {
+  display: block;
+  text-decoration: none;
+  margin: 0 auto 5px auto;
+  padding: 20px 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  border-left-width: 2px;
+  border-left-style: solid;
+}
+
+.sidebar-left .sidebar-links a i.fa {
+  display: block;
+  font-size: 35px;
+  margin-bottom: 5px;
+}
+
+.sidebar-left .sidebar-links a:hover{
+  background-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
+  -webkit-transition: all 0.5s;
+     -moz-transition: all 0.5s;
+       -o-transition: all 0.5s;
+          transition: all 0.5s;
+}
+
+/* Link Colours */
+.sidebar-left .sidebar-links a.link-blue {
+  border-color: #2495d0;
+}
+
 
 /* Making the sidebar responsive */
 @media (max-width: 900px) {
