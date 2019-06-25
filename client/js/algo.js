@@ -65,21 +65,51 @@ function generate(attribute) {
         document.querySelector("#inputArea").appendChild(div);
     }
     const goodData = document.querySelectorAll(".goodData");
+    let outputList = [];
     goodData.forEach(ele => {
         const arr = ele.firstElementChild.innerHTML.split('\n');
-        console.log(arr[0]);
         let weight = 0;
         for (let i = 0; i < attribute; ++i) {
             const slider = "#slider" + i;
             weight += document.querySelector(slider).value * arr[i + 1];
         }
-        console.log(weight);
+        let person = new Object();
+        person.name = arr[0];
+        person.weight = weight;
+        outputList.push(person);
     });
-
+    outputList.sort((a, b) => {
+        return a.weight - b.weight;
+    });
     //when want to sort add up the weights and put inside a set
     //than compute number of teams = x, total ppl/team size
     //split the set into x buckets, and randomly take 1 person from each bucket to create the team
-
+    const teamSize = document.querySelector("input[name='teamSlider']").value;
+    const numOfTeams = Math.ceil(outputList.length / teamSize);
+    let teams = [numOfTeams];
+    let buckets = [teamSize];
+    for (let i = 0; i < numOfTeams; ++i) {
+        teams[i] = [];
+    }
+    for (let i = 0; i < teamSize; ++i) {
+        buckets[i] = [];
+    }
+    for (let i = 0; i < outputList.length; ++i) {
+        buckets[~~(i / numOfTeams)].push(outputList[i]);
+    }
+    for (let i = 0; i < numOfTeams; ++i) {
+        for (let j = 0; j < teamSize; ++j) {
+            if (buckets[j].length) {
+                teams[i].push(buckets[j].splice(buckets[j].length * Math.random() | 0, 1)[0]);
+            }
+        }
+    }
+    for (let i = 0; i < numOfTeams; ++i) {
+        console.log(i);
+        teams[i].forEach(person => {
+            console.log(person.name + " " + person.weight);
+        });
+    }
 }
 
 function errorNoFieldSize(fieldsize) {

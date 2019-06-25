@@ -11,6 +11,11 @@
         <button id="undo">Undo</button>
         <button id="generate">Generate</button>
         <button id="clear">Clear All</button>
+        <form oninput="result.value=parseInt(teamSlider.value)">
+            <input type="range" name="teamSlider" value="50" />
+            <div>Size of a team</div>
+            <output name="result">50</output>
+        </form>
     </div>
     <div id="dataArea">
         <div id="raw"></div>
