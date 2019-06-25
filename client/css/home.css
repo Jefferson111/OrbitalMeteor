@@ -1,0 +1,48 @@
+div, p, table, tr, td, h2, h4 {
+      margin: 0;
+      padding: 0;
+      border: 0;
+}
+    
+h2 {
+      font-size: 1.05em;
+}
+
+h4 {
+      font-size: 0.8em;
+      padding: 0.5em;
+}
+
+.desc {
+  margin-left: 0.5em;
+}
+
+#main {
+  padding: 0.5em;
+  width: 100%;
+}
+
+#settings,
+#groupnames {
+  padding-left: 1.5em;
+}
+
+#names {
+  width: 20em;
+  height: 13.5em;
+}
+
+#themes,
+/* #customnames, */
+#actualgroups {
+  width: 14em;
+}
+
+#actualgroups {
+  height: 9.5em;
+}
+
+#cmdgen {
+  width: 12em;
+  height: 3em;
+}
