@@ -11,7 +11,7 @@ FOR ALGO PAGE
 -Add function to automatically deduce data and generate teams with just one click
 
 -Optional functions
- --Gender identification from data Male/Female/M/F map to 1s and 0s
+ --Gender identification from data Male/Female/M/F map to 1s and 0s, when calculating, either male/female is assign to an arbitary large number so that they are split into different buckets
  --Letter grade indetification from data A/B/C/D/E/F.. map to numbers
 
 CREATE PROFILE PAGE
