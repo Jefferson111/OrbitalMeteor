@@ -4,22 +4,25 @@
     {{else}}
     <div>You are not logged in</div>
     {{/if}}
-    <div id="inputArea">
-        <textarea placeholder="Enter data"></textarea>
-        <button id="submit">Submit</button>
-        <button id="collapse">Collapse</button>
-        <button id="undo">Undo</button>
-        <button id="generate">Generate</button>
-        <button id="clear">Clear All</button>
-        <form oninput="result.value=parseInt(teamSlider.value)">
-            <input type="range" name="teamSlider" value="50" />
-            <div>Size of a team</div>
-            <output name="result">50</output>
-        </form>
-    </div>
-    <div id="dataArea">
-        <div id="raw"></div>
-        <div id="process"></div>
-        <div id="grouping"></div>
+    <div id="userArea">
+        <div id="inputArea">
+            <textarea placeholder="Enter data"></textarea>
+            <button id="submit">Submit</button>
+            <button id="collapse">Collapse</button>
+            <button id="undo">Undo</button>
+            <button id="redo">Redo</button>
+            <button id="generate">Generate</button>
+            <button id="clear">Clear All</button>
+            <form oninput="result.value=parseInt(teamSlider.value)">
+                <input type="range" name="teamSlider" value="50" />
+                <div>Size of a team</div>
+                <output name="result">50</output>
+            </form>
+        </div>
+        <div id="dataArea">
+            <div id="raw"></div>
+            <div id="process"></div>
+            <div id="grouping"></div>
+        </div>
     </div>
 </template>

@@ -1,0 +1,31 @@
+FOR ALGO PAGE
+
+-Improve process data presentation on html	
+ --currently it just uses \n to seperate data
+
+-CSS for the entire algo page
+ --the buttons, slider etc
+
+-Add Generate function for teams with 0/No attributes
+
+-Add function to automatically deduce data and generate teams with just one click
+
+-Optional functions
+ --Gender identification from data Male/Female/M/F map to 1s and 0s
+ --Letter grade indetification from data A/B/C/D/E/F.. map to numbers
+
+CREATE PROFILE PAGE
+
+-Design a simple profile page
+ --List of other people
+ --Options for user to indicate whether friends
+
+-Design a more high level user page
+ --Use the friendship graph to form optimal teams
+ --Similar logic, after splitting into buckets, take person with lowest degree
+ --And lookup for companions in other buckets
+ --Does not guarantee best, but good enough
+
+HOME PAGE
+
+-Link up the algo for generating teams

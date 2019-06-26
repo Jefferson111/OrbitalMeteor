@@ -1,4 +1,6 @@
 let fieldsize = 0;
+let undoStack = [];
+let redoStack = [];
 
 Template.algo.rendered = function () {
 }
@@ -6,6 +8,7 @@ Template.algo.rendered = function () {
 Template.algo.events({
     "click #generate": () => {
         console.log("generate clicked");
+        undoStack.push(snapShot());
         if (fieldsize > 1) {
             generate(fieldsize - 1);
         }
@@ -13,6 +16,7 @@ Template.algo.events({
 
     "click #submit": () => {
         console.log("submit clicked");
+        undoStack.push(snapShot());
         const textArea = document.querySelector("#inputArea textarea");
         const data = textArea.value;
         textArea.value = "";
@@ -23,6 +27,7 @@ Template.algo.events({
 
     "click #collapse": () => {
         console.log("collapse clicked");
+        undoStack.push(snapShot());
         const checkboxes = document.querySelectorAll(".sel");
         fieldsize = 0;
         let nameChunk = 0;
@@ -40,18 +45,50 @@ Template.algo.events({
         createNewData(fieldsize, nameChunk);
     },
 
+    "click #redo": () => {
+        console.log("redo clicked");
+        if (redoStack.length) {
+            undoStack.push(snapShot());
+            let newFrame = redoStack.pop();
+            const parent = document.querySelector("#userArea");
+            deleteData(document.querySelector("#inputArea"));
+            parent.appendChild(newFrame.inputShot);
+            deleteData(document.querySelector("#dataArea"));
+            parent.appendChild(newFrame.dataShot);
+        }
+    },
+
     "click #undo": () => {
         console.log("undo clicked");
+        if (undoStack.length) {
+            redoStack.push(snapShot());
+            let newFrame = undoStack.pop();
+            const parent = document.querySelector("#userArea");
+            deleteData(document.querySelector("#inputArea"));
+            parent.appendChild(newFrame.inputShot);
+            deleteData(document.querySelector("#dataArea"));
+            parent.appendChild(newFrame.dataShot);
+        }
     },
 
     "click #clear": () => {
         console.log("clear clicked");
+        undoStack.push(snapShot());
         deleteChild(".rawData");
         deleteChild(".goodData");
         deleteChild(".group");
         deleteChild(".attSlider");
     }
 });
+
+function snapShot() {
+    let inputShot = document.querySelector("#inputArea").cloneNode(true);
+    let dataShot = document.querySelector("#dataArea").cloneNode(true);
+    let snapshot = new Object();
+    snapshot.inputShot = inputShot;
+    snapshot.dataShot = dataShot;
+    return snapshot;
+}
 
 function deleteChild(tag) {
     const data = document.querySelectorAll(tag);
@@ -101,6 +138,9 @@ function generate(attribute) {
     //than compute number of teams = x, total ppl/team size
     //split the set into x buckets, and randomly take 1 person from each bucket to create the team
     const teamSize = document.querySelector("input[name='teamSlider']").value;
+    if (teamSize === "0") {
+        return;
+    }
     const numOfTeams = Math.ceil(outputList.length / teamSize);
     let teams = [numOfTeams];
     let buckets = [teamSize];
