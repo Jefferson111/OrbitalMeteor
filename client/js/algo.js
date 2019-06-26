@@ -46,23 +46,39 @@ Template.algo.events({
 
     "click #clear": () => {
         console.log("clear clicked");
+        deleteChild(".rawData");
+        deleteChild(".goodData");
+        deleteChild(".group");
+        deleteChild(".attSlider");
     }
 });
 
+function deleteChild(tag) {
+    const data = document.querySelectorAll(tag);
+    data.forEach(child => deleteData(child));
+}
+
 function generate(attribute) {
+    //clear previous list
+    deleteChild(".group");
     //create object here
 
     let totalWeight = 0;
     for (let i = 0; i < attribute; ++i) {
-        const div = document.createElement("div");
-        const input = document.createElement("input");
-        input.type = "range";
-        input.id = "slider" + i;
-        input.min = 0;
-        input.max = 100;
-        input.step = 1;
-        div.appendChild(input);
-        document.querySelector("#inputArea").appendChild(div);
+        const key = "slider" + i
+        if (document.querySelector("#" + key) === null) {
+            const div = document.createElement("div");
+            div.classList.add("attSlider");
+            div.innerHTML = "Slider for attribute " + i;
+            const input = document.createElement("input");
+            input.type = "range";
+            input.id = key;
+            input.min = 0;
+            input.max = 100;
+            input.step = 1;
+            div.appendChild(input);
+            document.querySelector("#inputArea").appendChild(div);
+        }
     }
     const goodData = document.querySelectorAll(".goodData");
     let outputList = [];
@@ -105,8 +121,20 @@ function generate(attribute) {
         }
     }
     for (let i = 0; i < numOfTeams; ++i) {
+        const div = document.createElement("div");
+        div.classList.add("group");
+        div.innerHTML = "Group " + i;
+        document.querySelector("#grouping").appendChild(div);
+
+        const persons = document.createElement("ul");
+        div.appendChild(persons);
+
         console.log(i);
         teams[i].forEach(person => {
+            const content = document.createElement("li");
+            content.innerHTML = person.name;
+            content.classList.add("person");
+            persons.appendChild(content);
             console.log(person.name + " " + person.weight);
         });
     }
