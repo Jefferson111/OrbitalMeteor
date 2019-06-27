@@ -29,3 +29,4 @@ CREATE PROFILE PAGE
 HOME PAGE
 
 -Link up the algo for generating teams
+-Random grouping functionality
