@@ -4,7 +4,7 @@ export function deleteChild(tag) {
 }
 
 export function snapShot() {
-    let inputShot = document.querySelector(".inputArea").cloneNode(true);
+    let inputShot = document.querySelector("#sliderArea").cloneNode(true);
     let dataShot = document.querySelector("#dataArea").cloneNode(true);
     let snapshot = new Object();
     snapshot.inputShot = inputShot;

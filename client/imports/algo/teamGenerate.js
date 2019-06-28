@@ -12,7 +12,7 @@ export function createSlider(attribute) {
             input.max = 100;
             input.step = 1;
             div.appendChild(input);
-            document.querySelector(".inputArea").appendChild(div);
+            document.querySelector("#sliderArea").appendChild(div);
         }
     }
 }

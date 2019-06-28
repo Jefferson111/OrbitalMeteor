@@ -8,9 +8,9 @@
     <div>
         <table id="algoTable">
             <tr>
-                <td class="td" valign="top">
+                <td class="td" valign="top" id="dummyParent">
                     <h2>Input</h2>
-                    <div class="inputArea">
+                    <div class="inputArea" id="sliderArea">
                         <h4>Format: One name per line</h4>
                         <textarea id="inputText" placeholder="Enter data"></textarea>
                     </div>
@@ -33,10 +33,12 @@
                 </td>
             </tr>
         </table>
-        <div id="dataArea">
-            <div id="raw"></div>
-            <div id="process"></div>
-            <div id="grouping"></div>
+        <div id="dummyParent2">
+            <div id="dataArea">
+                <div id="raw"></div>
+                <div id="process"></div>
+                <div id="grouping"></div>
+            </div>
         </div>
     </div>
 </template>

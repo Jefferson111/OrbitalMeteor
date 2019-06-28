@@ -19,11 +19,12 @@ export function redo() {
 	if (redoStack.length) {
 		undoStack.push(snapShot());
 		let newFrame = redoStack.pop();
-		const parent = document.querySelector("#userArea");
-		deleteData(document.querySelector(".inputArea"));
-		parent.appendChild(newFrame.inputShot);
+		const parent = document.querySelector("#dummyParent");
+		deleteData(document.querySelector("#sliderArea"));
+        parent.appendChild(newFrame.inputShot);
+        const parent2 = document.querySelector("#dummyParent2");
 		deleteData(document.querySelector("#dataArea"));
-		parent.appendChild(newFrame.dataShot);
+		parent2.appendChild(newFrame.dataShot);
 	}
 }
 
@@ -39,11 +40,12 @@ export function undo() {
 	if (undoStack.length) {
 		redoStack.push(snapShot());
 		let newFrame = undoStack.pop();
-		const parent = document.querySelector("#userArea");
-		deleteData(document.querySelector(".inputArea"));
-		parent.appendChild(newFrame.inputShot);
+		const parent = document.querySelector("#dummyParent");
+		deleteData(document.querySelector("#sliderArea"));
+        parent.appendChild(newFrame.inputShot);
+        const parent2 = document.querySelector("#dummyParent2");
 		deleteData(document.querySelector("#dataArea"));
-		parent.appendChild(newFrame.dataShot);
+		parent2.appendChild(newFrame.dataShot);
 	}
 }
 
