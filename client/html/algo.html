@@ -4,21 +4,35 @@
     {{else}}
     <div>You are not logged in</div>
     {{/if}}
-    <div id="userArea">
-        <div id="inputArea">
-            <textarea placeholder="Enter data"></textarea>
-            <button id="submit">Submit</button>
-            <button id="collapse">Collapse</button>
-            <button id="undo">Undo</button>
-            <button id="redo">Redo</button>
-            <button id="generate">Generate</button>
-            <button id="clear">Clear All</button>
-            <form oninput="result.value=parseInt(teamSlider.value)">
-                <input type="range" name="teamSlider" value="50" />
-                <div>Size of a team</div>
-                <output name="result">50</output>
-            </form>
-        </div>
+
+    <div class="content">
+        <table id="main">
+            <tr>
+                <td class="td" valign="top">
+                    <h2>Input</h2>
+                    <div class="inputArea">
+                        <h4>Format: One name per line</h4>
+                        <textarea id="inputText" placeholder="Enter data"></textarea>
+                    </div>
+                </td>
+                <td class="td" valign="top">
+                    <h2>Settings</h2>
+                    <div class="inputArea">
+                        <form oninput="result.value=parseInt(teamSlider.value)">
+                            <input type="range" name="teamSlider" value="50" />
+                            <div>Size of a team</div>
+                            <output name="result">50</output>
+                        </form>
+                        <button class="btn btn-lg btn-success" id="submit" type="submit">Submit</button>
+                        <button class="btn btn-lg btn-info" id="collapse" type="submit">Collapse</button>
+                        <button class="btn btn-lg btn-warning" id="undo" type="submit">Undo</button>
+                        <button class="btn btn-lg btn-warning" id="redo" type="submit">Redo</button>
+                        <button class="btn btn-lg btn-success" id="generate" type="submit">Generate</button>
+                        <button class="btn btn-lg btn-danger" id="clear" type="submit">Clear All</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
         <div id="dataArea">
             <div id="raw"></div>
             <div id="process"></div>

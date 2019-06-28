@@ -14,10 +14,10 @@
   display: block;
   margin: 0 auto;
   padding: 0;
-  width: 80px;
+  width: 180px;
 }
 
-#company-logo {
+#company-name {
   display: block;
   text-decoration: none;
   margin: 0 auto;

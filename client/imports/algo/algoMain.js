@@ -6,7 +6,7 @@ let undoStack = [];
 let redoStack = [];
 
 export function submit() {
-	const textArea = document.querySelector("#inputArea textarea");
+	const textArea = document.querySelector(".inputArea textarea");
 	const data = textArea.value;
 	textArea.value = "";
 	if (data !== "") {
@@ -20,7 +20,7 @@ export function redo() {
 		undoStack.push(snapShot());
 		let newFrame = redoStack.pop();
 		const parent = document.querySelector("#userArea");
-		deleteData(document.querySelector("#inputArea"));
+		deleteData(document.querySelector(".inputArea"));
 		parent.appendChild(newFrame.inputShot);
 		deleteData(document.querySelector("#dataArea"));
 		parent.appendChild(newFrame.dataShot);
@@ -40,7 +40,7 @@ export function undo() {
 		redoStack.push(snapShot());
 		let newFrame = undoStack.pop();
 		const parent = document.querySelector("#userArea");
-		deleteData(document.querySelector("#inputArea"));
+		deleteData(document.querySelector(".inputArea"));
 		parent.appendChild(newFrame.inputShot);
 		deleteData(document.querySelector("#dataArea"));
 		parent.appendChild(newFrame.dataShot);
