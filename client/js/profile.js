@@ -2,6 +2,12 @@ Template.profile.rendered = () => {
 }
 
 Template.profile.helpers({
+
+    student: () => {
+        // Yet to be able to render
+        return Students.find({}, { sort: { createdAt: -1 } });
+    },
+
 	email: function () {
 		if (!Meteor.user()) {
 			Bert.alert("you are not logged in, permission denied", "danger", "growl-top-right");
@@ -20,19 +26,24 @@ Template.profile.helpers({
 		}
 	},
 
-	UserImages: function () {
+    UserImages: function () {
+        //broken currently
+        /*
 		var username = Meteor.user().username;
 		var userId = Meteor.userId();
 		var URL = UserImages.findOne({ username: username }, { userId: userId });
 		return URL;
+        */
 	}
 
 });
 
 Template.profile.events({
-	"submit .edit-profile": function (event) {
+    "submit .edit-profile": function (event) {
+        //borken currently
+        /*
 		var file = $('#profileImage').get(0).files[0];
-
+        
 		if (file) {
 
 			fsFile = new FS.File(file);
@@ -57,5 +68,6 @@ Template.profile.events({
 		}
 
 		return false // prevent submit
+        */
 	}
 });

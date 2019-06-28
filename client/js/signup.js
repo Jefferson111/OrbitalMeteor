@@ -4,34 +4,23 @@ Template.signup.rendered = function() {
 
 Template.signup.events({
 	"submit .form-signup": function(event){
-		var username = trimInput(event.target.username.value);
-		var email = trimInput(event.target.email.value);
-		var password = trimInput(event.target.password.value);
-		var password2 = trimInput(event.target.password2.value);
+		let username = trimInput(event.target.username.value);
+		let email = trimInput(event.target.email.value);
+		let password = trimInput(event.target.password.value);
+        let password2 = trimInput(event.target.password2.value);
+        let accountType = event.target.accountType.value;
 
 		if(isNotEmpty(email) && 
 			isNotEmpty(username) && 
 			isNotEmpty(password) &&
 			isEmail(email) &&
-			areValidPasswords(password,password2)) {
+            areValidPasswords(password, password2) &&
+            accountType !== "") {
 
-			Accounts.createUser({
-				username: username,
-				email: email,
-				password: password,
-				userId: Meteor.userId(),
-
-			}, function(err){
-				if(err){
-					Bert.alert(err.reason, "danger", "growl-top-right");
-				} else {
-					Bert.alert("Account created! You are now logged in", "success", "growl-top-right");
-					Router.go("/profile");
-				}
-			});
-
-			Meteor.call('initialiseCAP');
-			Meteor.call('initialiseActualCAP');
+            createAccount(username, email, password);
+            if (accountType === 'student') {
+                Meteor.call('addStudent');
+            }
 		}
 
 		return false; //prevent submit
@@ -39,14 +28,31 @@ Template.signup.events({
 
 });
 
+function createAccount(username, email, password) {
+    Accounts.createUser({
+        username: username,
+        email: email,
+        password: password,
+        userId: Meteor.userId(),
+
+    }, function (err) {
+        if (err) {
+            Bert.alert(err.reason, "danger", "growl-top-right");
+        } else {
+            Bert.alert("Account created! You are now logged in", "success", "growl-top-right");
+            Router.go("/profile");
+        }
+    });
+}
+
 // Validation rules
 
 //Trim Helper
-var trimInput = function(val){
+let trimInput = function(val){
 	return val.replace(/^\s*|s*$/g,"");
 }
 
-var isNotEmpty = function(value){
+let isNotEmpty = function(value){
 	if(value && value != ''){
 		return true;
 	}
@@ -56,7 +62,7 @@ var isNotEmpty = function(value){
 
 //Validate Email
 isEmail = function(value){
-	var filter = /^([a-zA-Z0-9_\.\-])*\@(([a-zA-Z0-9\-])*\.)*([a-zA-Z0-9]{2,4})*$/;
+	let filter = /^([a-zA-Z0-9_\.\-])*\@(([a-zA-Z0-9\-])*\.)*([a-zA-Z0-9]{2,4})*$/;
 	if(filter.test(value)) {
 		return true;
 	}
