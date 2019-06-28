@@ -1,10 +1,10 @@
-Tracker.autorun(function(){
-	if(Meteor.userId()){
-		Router.go("/home"); //go to myModules page immediately after login
+Tracker.autorun( () => {
+	if (Meteor.userId()) {
+		Router.go("/home"); //go to home page immediately after login
 	}
 });
 
-Template.login.rendered = function() {
+Template.login.rendered = () => {
 }
 
 Template.login.events({
