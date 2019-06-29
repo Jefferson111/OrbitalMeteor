@@ -3,7 +3,7 @@ div, p, table, tr, td, h2, h4 {
       padding: 0;
       border: 0;
 }
-    
+
 h2 {
       font-size: 1.05em;
 }
@@ -22,25 +22,19 @@ h4 {
   width: 100%;
 }
 
-#settings,
-#groupnames {
+#settings, #groupnames {
   padding-left: 1.5em;
 }
 
 #names {
-  width: 20em;
-  height: 13.5em;
+  width: 15em;
+  height: 10em;
 }
 
 #themes, #actualgroups {
-  width: 14em;
+  width: 13em;
 }
 
 #actualgroups {
-  height: 9.5em;
-}
-
-#cmdgen {
-  width: 12em;
-  height: 3em;
+  height: 7em;
 }
