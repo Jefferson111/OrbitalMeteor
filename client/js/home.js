@@ -2,6 +2,7 @@ import { createTeam } from '../imports/algo/teamGenerate.js'
 
 /**
  * To use createTeam, you must have a div with the id='grouping' for the results to be appended to
+ * and also an input element with the name='teamSlider' whose value represent the size of each team the user wants
  * 
  * Pass in an array of objects that has .name and .weight
  * 
