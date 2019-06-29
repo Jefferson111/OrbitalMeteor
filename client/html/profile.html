@@ -3,18 +3,21 @@
 	<!-- profile -->
 	<div id="profile-wrap">
 		<center>
-			{{#with UserImages}}
+			{{#if hasUserImage}}
 			<img src="{{image}}" class="profile-img">
 			{{else}}
 			<img src="github.svg" class="profile-img">
-			<form class="edit-profile" enctype="multipart/form-data">
-				<label for="profileImage">Choose Profile Image</label>
-				<span id="filename"></span>
-				<input type="file" name="profileImage" id="profileImage" class="black profileImage">
-				<br>
-				<button type="submit" value="Upload Photo" id="profile-btn" class="btn btn-sml btn-primary">Upload Photo</button>
-			</form>
-			{{/with}}
+            <form class="edit-profile" enctype="multipart/form-data">
+                <label for="url">Enter an Image URL:</label>
+
+                <input type="url" name="url" id="url"
+                       placeholder="https://example.com"
+                       pattern="https://.*" size="300"
+                       required>
+                <br>
+                <button type="submit" value="Upload Photo" id="profile-btn" class="btn btn-sml btn-primary">Upload Photo</button>
+            </form>
+			{{/if}}
 			<h1 class="username">{{username}}</h1>
 			<h3>{{email}}</h3>
 		</center>

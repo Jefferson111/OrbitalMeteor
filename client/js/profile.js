@@ -26,48 +26,34 @@ Template.profile.helpers({
 		}
 	},
 
-    UserImages: function () {
-        //broken currently
-        /*
+    hasUserImage: function () {
+        return UserImages.findOne({ userId: Meteor.userId() });
+    },
+
+    image: function () {
 		var username = Meteor.user().username;
 		var userId = Meteor.userId();
-		var URL = UserImages.findOne({ username: username }, { userId: userId });
-		return URL;
-        */
+		return UserImages.findOne({ username: username }, { userId: userId }).image;
 	}
 
 });
 
 Template.profile.events({
     "submit .edit-profile": function (event) {
-        //borken currently
-        /*
-		var file = $('#profileImage').get(0).files[0];
-        
-		if (file) {
+        let imageURL = document.querySelector('#url').value;
+        $.get(imageURL)
+            .done(function () {
+                // Do something now you know the image exists.
+                UserImages.insert({
+                    userId: Meteor.userId(),
+                    username: Meteor.user().username,
+                    image: imageURL,
+                });
 
-			fsFile = new FS.File(file);
-
-			ProfileImages.insert(fsFile, function (err, result) {
-				if (err) {
-					throw new Meteor.Error(err);
-				} else {
-
-					var imageLoc = '/cfs/files/ProfileImages/' + result._id;
-
-					UserImages.insert({
-						userId: Meteor.userId(),
-						username: Meteor.user().username,
-						image: imageLoc,
-					});
-
-					Bert.alert("Profile Update Successful!", "success", "growl-top-right");
-				}
-			});
-
-		}
-
-		return false // prevent submit
-        */
+                Bert.alert("Profile Update Successful!", "success", "growl-top-right");
+            }).fail(function () {
+                // Image doesn't exist - do something else.
+                return false;
+            })
 	}
 });
