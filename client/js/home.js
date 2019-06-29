@@ -1,3 +1,20 @@
+import { createTeam } from '../imports/algo/teamGenerate.js'
+
+/**
+ * To use createTeam, you must have a div with the id='grouping' for the results to be appended to
+ * 
+ * Pass in an array of objects that has .name and .weight
+ * 
+ * e.g. let listOfPpl = [];
+ * let person = new Object();
+ * person.name = "john";
+ * person.weight = 0;
+ * listOfPpl.push(person);
+ * createTeam(listOfPpl);
+ * 
+ */
+
+
 Template.home.rendered = () => {
 }
 
