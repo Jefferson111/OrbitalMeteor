@@ -3,8 +3,7 @@ Template.profile.rendered = () => {
 
 Template.profile.helpers({
 
-    student: () => {
-        // Yet to be able to render
+    students: () => {
         return Students.find({}, { sort: { createdAt: -1 } });
     },
 

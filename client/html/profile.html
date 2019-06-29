@@ -22,7 +22,9 @@
 			<h3>{{email}}</h3>
 		</center>
 	</div>
-    <div id="studentList">{{student}}</div>
+    {{#each student in students}}
+    <div>{{student.studentName}}</div>
+    {{/each}}
 	<!-- End profile -->
 	<!-- Js for switching file picker span -->
 	<script type="text/javascript">
