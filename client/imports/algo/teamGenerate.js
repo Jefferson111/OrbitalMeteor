@@ -7,6 +7,7 @@ export function createSlider(attribute) {
             div.innerHTML = "Slider for attribute " + i;
             const input = document.createElement("input");
             input.type = "range";
+            input.classList.add("slider");
             input.id = key;
             input.min = 0;
             input.max = 100;

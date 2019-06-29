@@ -96,9 +96,9 @@ function makeRawData(ele) {
 
     createDel(div);
 
-    createSel(div);
-
     createEdit(div);
+
+    createSel(div);
 
     document.querySelector("#raw").appendChild(div);
 }
@@ -121,7 +121,11 @@ function createEdit(div) {
     const edit = document.createElement("button");
     edit.innerText = "Edit";
     edit.addEventListener("click", () => editData(div, edit));
-    div.appendChild(edit);
+    insertAfter(edit, div.firstElementChild.nextElementSibling);
+}
+
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
 function editData(node, edit) {

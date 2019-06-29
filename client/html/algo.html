@@ -1,26 +1,26 @@
 <template name="algo">
     {{#if currentUser}}
-    <div>You are logged in</div>
+    <div>Welcome {{currentUser.username}}!</div>
     {{else}}
-    <div>You are not logged in</div>
+    <div>Welcome Annonymous!</div>
     {{/if}}
 
     <div>
         <table id="algoTable">
             <tr>
                 <td class="td" valign="top" id="dummyParent">
-                    <h2>Input</h2>
+                    <h2>Input:</h2>
                     <div class="inputArea" id="sliderArea">
-                        <h4>Format: One name per line</h4>
+                        <h4>Format: Name Field Field ... **Fields have to be numbers for now and each set of data must have same number of fields**</h4>
                         <textarea id="inputText" placeholder="Enter data"></textarea>
                     </div>
                 </td>
                 <td class="td" valign="top">
-                    <h2>Settings</h2>
+                    <h2>Settings:</h2>
                     <div class="inputArea">
                         <form oninput="result.value=parseInt(teamSlider.value)">
-                            <input type="range" name="teamSlider" value="50" />
                             <div>Size of a team</div>
+                            <input type="range" name="teamSlider" value="50" />
                             <output name="result">50</output>
                         </form>
                         <button class="btn btn-lg btn-success" id="submit" type="submit">Submit</button>
@@ -30,6 +30,7 @@
                         <button class="btn btn-lg btn-success" id="generate" type="submit">Generate</button>
                         <button class="btn btn-lg btn-danger" id="clear" type="submit">Clear All</button>
                     </div>
+                    <img src="https://media.giphy.com/media/9rlxoO1ETq0NPBziFm/giphy.gif" id="temp"/>
                 </td>
             </tr>
         </table>
