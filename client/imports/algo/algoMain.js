@@ -69,7 +69,7 @@ export function collapse() {
 }
 
 export function generate() {
-	if (fieldsize > 1) {
+	if (fieldsize > 0) {
 		updateStack();
 		executeGenerate(fieldsize - 1);
 	}
