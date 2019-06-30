@@ -22,35 +22,30 @@ Template.home.rendered = () => {
 Template.home.events({
     "click #cmdgen": () => {
         console.log("cmdgen clicked");
-        const namesTextArea = document.querySelector("#names");
-        const namesData = namesTextArea.value;
-        const themesTextArea = document.querySelector("#themes");
-        const themesData = themesTextArea.value;
-        const actualGroupNamesTextArea = document.querySelector("#actualgroups");
-        const actualGroupNamesData = actualGroupNamesTextArea.value;
-        if (namesData !== "") {
-            const node = document.querySelector("#output .desc #groupings");
-            if (node.hasChildNodes()) {
-                node.innerHTML = ""; // clears innerHTML before renderData
-            }
-            renderData(namesData, themesData, actualGroupNamesData);
-        }
+        createTeam(populateList());
     }
 });
 
-function renderData(namesData, themesData, actualGroupNamesData) {
-    const names = namesData.split(/[\s,]+/);
-    const groups = actualGroupNamesData.split(/[\s,]+/);
-    for (let i = 0; i < names.length; i++) {
-        makeRawData("Group" + ((themesData === "default" || groups[i] === "" ||
-            groups.length !== names.length) ? i + 1 : groups[i]) + ": " + names[i]);
+function populateList() {
+    const namesTextArea = document.querySelector("#names");
+    const namesData = namesTextArea.value;
+    // const themesTextArea = document.querySelector("#themes");
+    // const themesData = themesTextArea.value;
+    // const actualGroupNamesTextArea = document.querySelector("#actualgroups");
+    // const actualGroupNamesData = actualGroupNamesTextArea.value;
+    const names = namesData.split(/\r?\n/); // split according newline character
+    if (namesData !== "") {
+        const node = document.querySelector("#output .desc #grouping");
+        if (node.hasChildNodes()) {
+            node.innerHTML = "";
+        }
+        let outputList = [];
+        for (let i = 0; i < names.length; i++) {
+            let person = new Object();
+            person.name = names[i];
+            person.weight = 0;
+            outputList.push(person);
+        }
+        return outputList;
     }
-}
-
-function makeRawData(ele) {
-    const div = document.createElement("div");
-    const content = document.createElement("div");
-    content.innerHTML = ele;
-    div.appendChild(content);
-    document.querySelector("#output .desc #groupings").appendChild(div);
 }

@@ -28,9 +28,9 @@
                 <td id="settings" valign="top">
                     <h2>Settings</h2>
                     <div class="desc">
-                        <form id="form" oninput="result.value='No. of Groups: '+parseInt(groupSlider.value)">
-                            <output name="result">No. of Groups: 5</output>
-                            <input type="range" min="2" max="25" id="groupSlider" name="groups" value="5" />
+                        <form id="form" oninput="result.value='Size of a team: '+parseInt(teamSlider.value)">
+                            <output name="result">Size of a team: 50</output>
+                            <input type="range" min="1" name="teamSlider" value="50" />
                         </form>    
                     </div>
                     <div class="desc">
@@ -53,7 +53,7 @@
         <h2>Output</h2>
         <div class="desc">
             <h4>Grouping below:</h4>
-            <div class="desc" id="groupings">
+            <div class="desc" id="grouping">
             </div>
         </div>
     </div>
