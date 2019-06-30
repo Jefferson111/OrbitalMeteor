@@ -3,6 +3,12 @@ export function deleteChild(tag) {
     data.forEach(child => deleteData(child));
 }
 
+export function clearInnerHTML(node) {
+    if (node.hasChildNodes()) {
+        node.innerHTML = "";
+    }
+}
+
 export function snapShot() {
     let inputShot = document.querySelector("#sliderArea").cloneNode(true);
     let dataShot = document.querySelector("#dataArea").cloneNode(true);

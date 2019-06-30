@@ -18,6 +18,21 @@ export function createSlider(attribute) {
     }
 }
 
+/**
+ * To use createTeam, you must have a div with the id='grouping' for the results to be appended to
+ * and also an input element with the name='teamSlider' whose value represent the size of each team the user wants
+ * 
+ * Pass in an array of objects that has .name and .weight
+ * 
+ * e.g. let listOfPpl = [];
+ * let person = new Object();
+ * person.name = "john";
+ * person.weight = 0;
+ * listOfPpl.push(person);
+ * createTeam(listOfPpl);
+ * 
+ */
+
 export function createTeam(outputList) {
     const teamSize = document.querySelector("input[name='teamSlider']").value;
     if (teamSize === "0") {

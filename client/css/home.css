@@ -28,7 +28,7 @@ h4 {
 
 #names {
   width: 15em;
-  height: 10em;
+  height: 9.5em;
 }
 
 #themes, #actualgroups {
@@ -36,5 +36,9 @@ h4 {
 }
 
 #actualgroups {
-  height: 7em;
+  height: 6.25em;
+}
+
+#randomise {
+  margin-top: 2em;
 }

@@ -1,4 +1,5 @@
 import { createTeam } from '../imports/algo/teamGenerate.js'
+import { clearInnerHTML } from '../imports/algo/dataRelatedFunction.js'
 
 /**
  * To use createTeam, you must have a div with the id='grouping' for the results to be appended to
@@ -22,6 +23,7 @@ Template.home.rendered = () => {
 Template.home.events({
     "click #cmdgen": () => {
         console.log("cmdgen clicked");
+        clearInnerHTML(document.querySelector("#output .desc #grouping"));
         createTeam(populateList());
     }
 });
@@ -33,19 +35,16 @@ function populateList() {
     // const themesData = themesTextArea.value;
     // const actualGroupNamesTextArea = document.querySelector("#actualgroups");
     // const actualGroupNamesData = actualGroupNamesTextArea.value;
-    const names = namesData.split(/\r?\n/); // split according newline character
+    const outputList = [];
     if (namesData !== "") {
-        const node = document.querySelector("#output .desc #grouping");
-        if (node.hasChildNodes()) {
-            node.innerHTML = "";
-        }
-        let outputList = [];
+        const names = namesData.split(/\r?\n/); // split according newline character
         for (let i = 0; i < names.length; i++) {
+            if (names[i] === "") continue;
             let person = new Object();
             person.name = names[i];
             person.weight = 0;
             outputList.push(person);
         }
-        return outputList;
     }
+    return outputList;
 }
