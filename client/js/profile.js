@@ -1,3 +1,4 @@
+let toggle = 1;
 Template.profile.rendered = () => {
 }
 
@@ -5,6 +6,10 @@ Template.profile.helpers({
 
     students: () => {
         return Students.find({}, { sort: { createdAt: -1 } });
+    },
+
+    friendList: () => {
+        return PreferenceList.findOne({ userId: Meteor.userId() }).list;
     },
 
 	email: function () {
@@ -54,5 +59,34 @@ Template.profile.events({
                 // Image doesn't exist - do something else.
                 return false;
             })
-	}
+    },
+
+    "click #friend-btn": () => {
+        console.log("User Preference button clicked");
+        updateFriendList(Meteor.userId());
+    },
+
+    "click #openbtn": () => {
+        if (toggle) {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("profile-wrap").style.marginRight = "250px";
+            document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        } else {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("profile-wrap").style.marginLeft = "0";
+            document.body.style.backgroundColor = "white";
+        }
+        toggle = 1 - toggle;
+    },
 });
+
+function updateFriendList(userId) {
+    Meteor.call("clearPreference", userId);
+    const allCheckbox = document.querySelectorAll('.preference-list');
+    const friendCheckbox = Array.from(allCheckbox).filter(ele => (ele.checked === true));
+    let newList = [];
+    friendCheckbox.forEach(ele => {
+        newList.push(ele.parentNode.firstElementChild.innerHTML);
+    });
+    Meteor.call("addPreference", userId, newList);
+}
