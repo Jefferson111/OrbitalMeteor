@@ -69,11 +69,9 @@ Template.profile.events({
     "click #openbtn": () => {
         if (toggle) {
             document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("profile-wrap").style.marginRight = "250px";
             document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
         } else {
             document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("profile-wrap").style.marginLeft = "0";
             document.body.style.backgroundColor = "white";
         }
         toggle = 1 - toggle;
