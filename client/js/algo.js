@@ -7,16 +7,19 @@ Template.algo.events({
     "click #generate": () => {
         console.log("generate clicked");
         generate();
+        Bert.alert("Congratulations! You are done!", "success", "growl-top-right");
     },
 
     "click #submit": () => {
         console.log("submit clicked");
         submit();
+        Bert.alert("Now select data to collapse", "success", "growl-top-right");
     },
 
     "click #collapse": () => {
         console.log("collapse clicked");
         collapse();
+        Bert.alert("Now select teams size to generate", "success", "growl-top-right");
     },
 
     "click #redo": () => {
