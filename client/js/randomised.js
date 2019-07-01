@@ -1,26 +1,10 @@
 import { createTeam } from '../imports/algo/teamGenerate.js'
 import { clearInnerHTML } from '../imports/algo/dataRelatedFunction.js'
 
-/**
- * To use createTeam, you must have a div with the id='grouping' for the results to be appended to
- * and also an input element with the name='teamSlider' whose value represent the size of each team the user wants
- * 
- * Pass in an array of objects that has .name and .weight
- * 
- * e.g. let listOfPpl = [];
- * let person = new Object();
- * person.name = "john";
- * person.weight = 0;
- * listOfPpl.push(person);
- * createTeam(listOfPpl);
- * 
- */
-
-
-Template.home.rendered = () => {
+Template.randomised.rendered = () => {
 }
 
-Template.home.events({
+Template.randomised.events({
     "click #cmdgen": () => {
         console.log("cmdgen clicked");
         clearInnerHTML(document.querySelector("#output .desc #grouping"));

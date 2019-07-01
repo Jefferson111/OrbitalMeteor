@@ -1,6 +1,6 @@
 Tracker.autorun( () => {
 	if (Meteor.userId()) {
-		Router.go("/home"); //go to home page immediately after login
+		Router.go("/profile"); //go to home page immediately after login
 	}
 });
 
@@ -22,7 +22,7 @@ Template.login.events({
 					Bert.alert(err.reason, "danger", "growl-top-right");
 					return false;
 				} else {
-					Router.go("/home");
+					Router.go("/profile");
 					Bert.alert("You are now logged in", "success", "growl-top-right");
 				}
 			});

@@ -1,9 +1,9 @@
 import {submit, generate, collapse, redo, undo, clear} from '../imports/algo/algoMain.js';
 
-Template.algo.rendered = function () {
+Template.optimised.rendered = function () {
 }
 
-Template.algo.events({
+Template.optimised.events({
     "click #generate": () => {
         console.log("generate clicked");
         generate();
