@@ -92,3 +92,46 @@ function updateStack() {
 	undoStack.push(snapShot());
 	redoStack = [];
 }
+//automatically collapse the data without the need of user to select the checkboxes
+//incomplete currently
+function smartCollapse() {
+    const rawData = Array.from(document.querySelectorAll('.rawData'));
+    let attributeList = [];
+    rawData.forEach(ele => {
+        const currType = getDataType(ele.firstElementChild.innerHTML);
+        if (currType === 'name' && attributeList.length > 0 && attributeList[attributeList.length - 1] === 'name') {
+        } else {
+            attributeList.push(currType);
+        }
+    });
+    const smallestDivisor = getSmallestPattern(attributeList);
+    if (smallestDivisor > 1) {
+        createNewData(smallestDivisor - 1, 1);
+    } else {
+        //no pattern detected, all data are the same type
+    }
+}
+
+function getDataType(text) {
+    //if int return something
+    //if string return something else
+    //etc
+}
+
+function getSmallestPattern(list) {
+    const divisorArr = getDivisor(list.length);//from smallest to largest 1, ... , list.length
+    divisorArr.forEach(ele => {
+        const factor = list.length / ele;
+        let newList = [];
+        for (let i = 0; i < factor; ++i) {
+            //splice and append
+        }
+        if (arrays_equal(newList, list)) {
+            return ele;
+        }
+    });
+}
+
+function arrays_equal(a, b) {
+    return JSON.stringify(a) == JSON.stringify(b);
+}
