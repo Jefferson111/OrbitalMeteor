@@ -1,8 +1,27 @@
 let toggle = 1;
+
 Template.profile.rendered = () => {
 }
 
 Template.profile.helpers({
+
+    imageRecognition: () => {
+        mobilenet.load()
+            .then(net => {
+                console.log('Sucessfully loaded model');
+
+                // Make a prediction through the model on our image.
+                const imgEl = document.querySelector('#profile-wrap img');
+                if (imgEl !== "") {
+                    net.classify(imgEl)
+                        .then(result => {
+                            console.log(result);
+                            document.querySelector('#imageTag').innerHTML = result[0].className;
+                        }).catch();
+                }
+            })
+            .catch();
+    },
 
     students: () => {
         return Students.find({}, { sort: { createdAt: -1 } });
