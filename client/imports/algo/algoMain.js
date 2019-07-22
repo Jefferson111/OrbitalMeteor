@@ -39,7 +39,7 @@ export function clear() {
 export function undo() {
 	if (undoStack.length) {
 		redoStack.push(snapShot());
-		let newFrame = undoStack.pop();
+		const newFrame = undoStack.pop();
 		const parent = document.querySelector("#dummyParent");
 		deleteData(document.querySelector("#sliderArea"));
         parent.appendChild(newFrame.inputShot);
@@ -81,11 +81,11 @@ function executeGenerate(attribute) {
 
 	createSlider(attribute);
 
-	let outputList = createSortedList(attribute);
+	const outputList = createSortedList(attribute);
 
 	//creates a team from a list of people
 	//jsonobject: .name and .weight
-	createTeam(outputList);
+	createTeam(outputList, []);
 }
 
 function updateStack() {

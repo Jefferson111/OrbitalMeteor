@@ -1,12 +1,12 @@
 <template name="randomised">
     <div class="content">
-        <table id="homeTable">
+        <table id="randomisedTable">
             <tr>
                 <td valign="top">
                     <h2>Input</h2>
                     <div class="desc">
                         <h4>Format: One name per line</h4>
-                        <textarea id="names" name="names" autofocus="autofocus"
+                        <textarea id="names" class="goodData" name="names" autofocus="autofocus"
                             placeholder="Paste names of group members here"></textarea>
                     </div>
                 </td>
@@ -16,6 +16,8 @@
                         <h4>Customise the theme:</h4>
                         <select id="themes" name="themes">
                             <option value="custom">Custom</option>
+                            <option value="animals">Animals</option>
+                            <option value="colours">Colours</option>
                             <option value="default" selected="selected">Default</option>
                         </select>
                     </div>
