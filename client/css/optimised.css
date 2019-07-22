@@ -4,13 +4,17 @@
   table-layout: fixed;
 }
 
+.btn {
+  margin: 0.2em;
+}
+
 .inputArea {
   margin-left: 0.5em;
 }
 
 #inputText {
   width: 20em;
-  height: 10em;
+  height: 10.5em;
 }
 
 #dataArea {
