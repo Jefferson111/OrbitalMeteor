@@ -1,7 +1,8 @@
 # GroupCreator | Project: Gemini
 
 <img src="https://i.ibb.co/prdcL4y/orbital-ignition.jpg" width="300"/>
-WebApp aim to provide optimised groupings based on user input.
+
+WebApp aims to provide optimised groupings based on user input.
 
 ## Setting Up
 

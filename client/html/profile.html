@@ -23,23 +23,36 @@
             <h3>{{email}}</h3>
         </center>
     </div>
-    <div>
-        <h3>Student List: (Select classmates you prefer to group with)</h3>
-        {{#each student in students}}
-        <label class="container">
-            <div>{{student.studentName}}</div>
-            <input type="checkbox" checked="checked" class="preference-list">
-            <span class="checkmark"></span>
-        </label>
-        {{/each}}
-        <button type="submit" id="friend-btn">Update Preference</button>
-    </div>
-    <button id="openbtn">View Current Preference</button>
-    <div id="mySidenav" class="sidenav">
-        <div>Your Preferences:</div>
-        {{#each friend in friendList}}
-        <div>{{friend}}</div>
-        {{/each}}
-    </div>
+        {{#if isStudent}}
+        <div>
+            <h3>Student List: (Select classmates you prefer to group with)</h3>
+            {{#each student in students}}
+            <label class="container">
+                <div>{{student.studentName}}</div>
+                <input type="checkbox" checked="checked" class="preference-list">
+                <span class="checkmark"></span>
+            </label>
+            {{/each}}
+            <button type="submit" id="friend-btn">Update Preference</button>
+        </div>
+        <button id="openbtn">View Current Preference</button>
+        <div id="mySidenav" class="sidenav">
+            <div>Your Preferences:</div>
+            {{#each friend in friendList}}
+            <div>{{friend}}</div>
+            {{/each}}
+        </div>
+        {{/if}}
+        {{#if isTeacher}}
+        <div>
+            <h3>Student List: </h3>
+            {{#each student in students}}
+            <label class="container">
+                <div>{{student.studentName}}</div>
+                <div>Preference List: {{getFriendList(student.userId)}}</div>
+            </label>
+            {{/each}}
+        </div>
+        {{/if}}
     {{/if}}
 </template>

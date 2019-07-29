@@ -54,11 +54,23 @@ Template.profile.helpers({
     },
 
     image: function () {
-		var username = Meteor.user().username;
-		var userId = Meteor.userId();
+		const username = Meteor.user().username;
+		const userId = Meteor.userId();
 		return UserImages.findOne({ username: username }, { userId: userId }).image;
-	}
+	},
 
+    isStudent: function() {
+        return Students.findOne({ userId: Meteor.userId() });
+    },
+
+    isTeacher: function() {
+        return !Students.findOne({ userId: Meteor.userId() });
+    },
+
+    getFriendList: function(userId) {
+        return PreferenceList.findOne({ userId: userId }).list;
+
+    }
 });
 
 Template.profile.events({
@@ -76,6 +88,7 @@ Template.profile.events({
                 Bert.alert("Profile Update Successful!", "success", "growl-top-right");
             }).fail(function () {
                 // Image doesn't exist - do something else.
+                Bert.alert("Image does not exist", "danger", "growl-top-right");
                 return false;
             })
     },
